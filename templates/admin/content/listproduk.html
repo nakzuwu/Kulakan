@@ -1,0 +1,44 @@
+{% extends '/admin/base.html' %}
+
+{% block content %}
+<div class="main">
+    <div class="product-list">
+        <h2 class="title">Daftar Produk</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Gambar</th>
+                    <th>Nama Barang</th>
+                    <th>Harga</th>
+                    <th>Kategori</th>
+                    <th>Stok</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in dataProduk %}
+                <tr>
+                    <td>
+                        {% if product.gambar %}
+                            <img src="{{ url_for('static', filename='profile_photos/' + product.gambar) }}" alt="{{ product.nama_barang }}" class="product-image">
+                        {% else %}
+                            <img src="{{ url_for('static', filename='asset/image/download.jpg') }}" alt="Default Image" class="product-image">
+                        {% endif %}
+                    </td>
+                    <td>{{ product.nama_barang }}</td>
+                    <td>Rp {{ "{:,}".format(product.harga) }}</td>
+                    <td>{{ product.kategori }}</td>
+                    <td>{{ product.stok }}</td>
+                    <td class="actions">
+                        <a href="{{ url_for('editProduk', id=product.id) }}" class="btn-edit">Edit</a>
+                        <form method="POST" action="{{ url_for('deleteProduk', id=product.id) }}" style="display:inline-block;">
+                            <button type="submit" class="btn-delete" onclick="return confirm('Yakin ingin menghapus produk ini?')">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

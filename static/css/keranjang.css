@@ -1,0 +1,255 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+.back-button {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #004600;
+    text-decoration: none;
+    background-color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .back-button i {
+    font-size: 16px;
+  }
+  
+  .back-button:hover {
+    background-color: #f0f0f0;
+    color: #000;
+  }
+  
+
+.order-list {
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #004600;
+}
+
+.order-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e0f2d8;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-info {
+    display: flex;
+    align-items: center;
+}
+
+.product-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.order-details {
+    color: #004600;
+}
+
+.order-details h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.order-details p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.price {
+    color: #004600;
+    font-weight: bold;
+}
+
+.order-status {
+    text-align: right;
+}
+
+.status-text {
+    margin: 0;
+    font-size: 14px;
+    color: #004600;
+    font-weight: bold;
+}
+
+.rate-button {
+    margin-top: 10px;
+    background-color: #69BF5E;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.rate-button:hover {
+    background-color: #57a84d;
+}
+/* Styling untuk checkbox */
+/* Styling untuk checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.checkbox-container input[type="checkbox"]:checked + .checkmark {
+    background-color: #69BF5E;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input[type="checkbox"]:checked + .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Styling tata letak checkbox dan elemen lainnya */
+.order-info {
+    display: flex;
+    align-items: center;
+}
+
+.product-image {
+    margin-left: 10px;
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+/* General Styling for Quantity Control */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Label Styling */
+.quantity-control label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #004600;
+}
+
+/* Input Field Styling */
+.quantity-input {
+    width: 40px;
+    height: 20px;
+    font-size: 14px;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    color: #004600;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Input Field Hover and Focus */
+.quantity-input:hover {
+    border-color: #4CAF50;
+    background-color: #fff;
+}
+.quantity-input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+/* Checkout Button Styling */
+.cart-summary h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #004600;
+}
+.cart-summary #subtotal {
+    font-weight: bold;
+    color: #4CAF50;
+}
+.btn-checkout {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-checkout:hover {
+    background-color: #388E3C;
+    transform: translateY(-2px);
+}
+
+.btn-checkout:active {
+    background-color: #2E7D32;
+    transform: translateY(0);
+}

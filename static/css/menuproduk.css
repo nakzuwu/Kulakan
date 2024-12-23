@@ -1,0 +1,196 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #004600;
+}
+.back-button {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #004600;
+    text-decoration: none;
+    background-color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .back-button i {
+    font-size: 16px;
+  }
+  
+  .back-button:hover {
+    background-color: #f0f0f0;
+    color: #000;
+  }
+  
+.search-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Jarak antar ikon dan search bar */
+    margin-bottom: 20px;
+}
+.search-bar {
+    width: 50%;
+    display: flex;
+    border: 2px solid #69BF5E;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.camera-icon {
+    background-color: #69BF5E;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Membuat ikon kamera berbentuk lingkaran */
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.camera-icon i {
+    color: #fff;
+    font-size: 18px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #004600;
+    margin-left:1px
+}
+   
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Ubah menjadi 4 kolom */
+    gap: 2px; /* Kurangi jarak antar card */
+    width: 80%;
+    margin-top: 20px;
+}
+
+.product-card {
+    width: 250px; /* Tentukan lebar tetap */
+    height: 350px; /* Tentukan tinggi tetap */
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden; /* Supaya konten tidak keluar dari card */
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Atur tinggi tetap untuk gambar */
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar menyesuaikan dengan ukuran tanpa mengubah proporsi */
+    border-radius: 8px;
+}
+
+.tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #69BF5E;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.tag.new {
+    background-color: #69BF5E;
+}
+
+.tag.sale {
+    background-color: #FF6B6B;
+    top: 40px;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+    white-space: nowrap; /* Batasi hanya satu baris */
+    overflow: hidden; /* Sembunyikan teks yang melebihi batas */
+    text-overflow: ellipsis; /* Tambahkan tanda "..." di akhir teks */
+}
+
+
+.product-price {
+    font-size: 16px;
+    color: #004600;
+    margin-top: 5px;
+}
+
+.price {
+    color: #69BF5E;
+    font-weight: bold;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 5px;
+}
+
+.add-to-cart {
+    background-color: #69BF5E;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #57a84d;
+}

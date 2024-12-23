@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proses Pembayaran - KULAKAN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment_processing.css') }}">
+</head>
+<body>
+    <a href="{{ url_for('home') }}" class="back-button">Kembali</a>
+    <div class="payment-container">
+        <h1>Proses Pembayaran</h1>
+
+        <!-- Rincian Pembayaran -->
+        <div class="section">
+            <h3>Rincian Pembayaran</h3>
+            <p><strong>Total Pembayaran:</strong> Rp {{ "{:,}".format(total) }}</p>
+            <p><strong>Metode Pembayaran:</strong> {{ request.form['payment_method'] | capitalize }}</p>
+        </div>
+
+        <!-- Konfirmasi Pembayaran -->
+        <div class="section">
+            <h3>Konfirmasi Pembayaran</h3>
+            <p>Pastikan rincian pembayaran sudah benar sebelum melanjutkan.</p>
+            <p>Jika Anda sudah yakin, klik tombol "Lanjutkan Pembayaran" untuk menyelesaikan transaksi.</p>
+        </div>
+
+        <!-- Tombol Lanjutkan Pembayaran -->
+        <div class="action">
+            <button class="continue-button" onclick="window.location.href='{{ url_for('process_payment') }}'">Lanjutkan Pembayaran</button>
+        </div>
+    </div>
+</body>
+</html>

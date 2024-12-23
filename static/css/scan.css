@@ -1,0 +1,100 @@
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #ffffff; /* Background putih */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .back-button {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    background-color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .back-button i {
+    font-size: 16px;
+  }
+  
+  .back-button:hover {
+    background-color: #f0f0f0;
+    color: #000;
+  }
+  
+  /* Scan Container: Fullscreen Card */
+  .scan-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: none; /* Tidak ada shadow pada container */
+  }
+  
+  /* Camera Icon */
+  .camera-icon {
+    position: relative;
+  }
+  
+  .camera-icon img {
+    width: 150px;
+    height: auto;
+    z-index: 1; /* Pastikan gambar berada di atas */
+  }
+  
+  .camera-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    background: rgba(105, 191, 94, 0.4); /* Warna hijau dengan transparansi */
+    filter: blur(40px);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0; /* Glow di bawah gambar */
+  }
+  
+  /* Choose Photo Button */
+  .choose-photo {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #69bf5e;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(105, 191, 94, 0.3);
+  }
+  
+  .choose-photo:hover {
+    background-color: #57a94d;
+    transform: scale(1.05);
+  }
+  
+  .choose-photo:active {
+    transform: scale(0.98);
+    box-shadow: 0 3px 10px rgba(105, 191, 94, 0.2);
+  }
+  

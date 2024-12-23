@@ -1,0 +1,618 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins' , serif;
+    color: #004600;
+    overflow: scroll;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Ubah header menjadi transparan dan posisikan di atas hero */
+header {
+    position: absolute; /* Agar menumpuk di atas hero */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px; /* Sesuaikan padding */
+    background-color: rgba(255, 255, 255, 0); /* Transparansi background */
+    z-index: 1; /* Pastikan di atas elemen lain */
+}
+
+.logo {
+    font-size: 24px;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    margin-left: 30px;
+    color: #69BF5E; /* Warna hijau */
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #004600;
+    font-weight: 500;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    list-style-type: none;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    margin: 5px 0;
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+    color: #004600;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+.sign-in {
+    padding: 10px 20px;
+    background-color: #69BF5E; /* Warna hijau */
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Gaya hero */
+.hero {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 100px 40px;
+    color: white;
+    min-height: 600px; /* Tinggi minimal */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+.hero-image {
+    width: 25%; /* Ukuran gambar hero */
+    float: right;
+    margin: 20px 100px 20px 20px; /* Menyesuaikan margin kanan untuk mendekatkan ke kiri */
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+}
+
+.hero-text {
+    color: #004600;
+    margin-top: 100px;
+    margin-left: 30px;
+}
+
+.hero-text h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 60px;
+    font-weight: bold;
+    color: #004600;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #004600;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.chatbot-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.chatbot-icon img {
+    width: 50%;
+    height: 50%;
+}
+
+
+.chatbot-window {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.chatbot-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-family: 'Merriweather', serif;
+}
+
+
+.chatbot-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 12px;
+    font-family: 'Poppins', serif;
+}
+
+.message {
+    padding: 8px;
+    border-radius: 15px;
+    max-width: 80%;
+}
+
+.bot {
+    background-color: #d3d3d3;
+    align-self: flex-start;
+}
+
+.chatbot-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+}
+
+.chatbot-input button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    margin-left: 8px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.trending-products {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #69BF5E;
+    color: white;
+    text-align: center;
+}
+
+.trending-products h2 {
+    font-size: 24px;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.trending-products p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.product-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-item img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto;
+    border-radius: 8px;
+}
+
+.description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #63C155; /* Warna latar hijau */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.image-placeholder {
+    width: 300px;
+    height: 330px;
+    border-radius: 8px;
+    background-color: white;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.text-content{
+    text-align:left;
+    margin-left: 20px;
+    margin-top: 50px;
+}
+.text-content h3 {
+    color: white;
+    font-size: 1.5em;
+    font-family: 'Merriweather', serif;
+    margin: 0;
+}
+
+.text-content p {
+    color: white;
+    font-size: 1em;
+    line-height: 1.6;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.promotion {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.promotion h2 {
+    color: #004600;
+    font-family: 'Merriweather', serif;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.promotion-offers {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.offer-item {
+    width: 350px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.offer-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.offer-text {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Memindahkan teks ke tengah */
+    color: #ffffff;
+    padding: 10px;
+    font-size: 30px;
+    font-family: 'Poppins', serif;
+    font-weight: 900;
+    text-align: center;
+    box-sizing: inherit;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+
+.limited-offer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #e0f2d8; /* Warna latar belakang untuk bagian teks */
+    position: relative;
+    margin-top: 120px;
+    margin-bottom: 100px;
+}
+
+.text-box {
+    flex: 1;
+    padding: 20px;
+    color: #2f4f2f;
+    z-index: 1; /* Memastikan teks di atas */
+    margin-left: 30px;
+}
+.text-box text{
+    margin-left: 50px;
+}
+
+.text-box h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #2f4f2f;
+    margin-left: 50px;
+}
+
+.text-box p {
+    font-size: 16px;
+    color: #2f4f2f;
+    margin-left: 50px;
+}
+.text-box h3{
+    font-size: 14px;
+    font-style: italic;
+    margin-left: 50px;
+}
+
+.image-box {
+    width: 300px;
+    height: 300px;
+    background-color: #63C155; /* Warna hijau untuk kotak */
+    position: absolute;
+    right: 230px; /* Menempatkan kotak di sisi kanan dan sedikit overlapping */
+    z-index: 0; /* Membuat kotak di belakang teks */
+}
+/* Bagian Blog */
+.blog {
+    margin-top: 150px;
+    margin-bottom: 50px;
+    text-align: center;
+
+}
+
+.blog-title h2 {
+    font-size: 28px;
+    color: #2f4f2f;
+    font-family: 'Merriweather', serif;
+    margin-bottom: 10px;
+}
+
+.blog-title p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.blog-content {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.blog-post {
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.blog-post h3 {
+    font-size: 20px;
+    color: #2f4f2f;
+    font-family: 'Merriweather', serif;
+    margin-bottom: 10px;
+}
+
+.blog-post p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.blog-post a {
+    color: #66bb6a;
+    text-decoration: none;
+}
+
+/* Bagian Footer */
+.footer {
+    background-color: #2f4f2f;
+    color: #ffffff;
+    padding: 50px 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    padding: 10px;
+}
+
+.footer-section h2, .footer-section h3 {
+    color: #ffffff;
+    font-family: 'Merriweather', serif;
+}
+
+.footer-section p, .footer-section a {
+    font-size: 14px;
+    color: #d4d4d4;
+    margin: 5px 0;
+}
+
+.footer-section a {
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #66bb6a;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 12px;
+    color: #d4d4d4;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 4px;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    background-color: #66bb6a;
+    border: none;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #2f4f2f;
+}
+
+.profile-logo {
+    display: flex;
+    align-items: center; /* Vertikal tengah */
+}
+
+.profile-logo img {
+    width: 50px; /* Atur ukuran foto */
+    height: 50px;
+    border-radius: 50%; /* Foto menjadi lingkaran */
+    margin-right: 10px; /* Jarak antara foto dan teks */
+}
+
+.profile-logo p {
+    margin: 0;
+    font-size: 16px; /* Sesuaikan ukuran teks */
+    font-weight: 600;
+    color: #4CAF50; /* Warna teks (opsional) */
+    margin-right: 10px;
+}
+
+
+.profile-photo img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover; /* Maintains the aspect ratio while filling the container */
+    border-radius: 10px; /* Optional: Rounded corners for better appearance */
+    border: 2px solid #ddd; /* Optional: Adds a border */
+}
+
+.main-container {
+    padding: 80px 40px; /* Adds 80px padding above and 40px on the sides */
+}
+
+.profile-container,
+.profile-edit-container {
+    margin-bottom: 40px; /* Optional: Adds space between sections */
+}
+
+.profile-photo img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+}
+.profile-logo {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    margin-right: 10px; /* Adjust the space between name and photo */
+    font-weight: bold;
+}
+
+.profile-photo {
+    width: 40px; /* Adjust photo size as needed */
+    height: 40px; /* Adjust photo size as needed */
+    border-radius: 50%;
+    cursor: pointer;
+}

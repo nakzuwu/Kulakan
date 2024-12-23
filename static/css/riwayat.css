@@ -1,0 +1,60 @@
+body {
+    font-family: "popins", serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.riwayat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.riwayat-item {
+    display: flex;
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    align-items: center;
+    gap: 20px;
+}
+
+.produk-gambar img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.produk-info h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.produk-info p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.produk-info p:last-child {
+    font-size: 14px;
+    color: #888;
+}

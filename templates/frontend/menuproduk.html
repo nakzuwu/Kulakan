@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KULAKAN</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/menuproduk.css') }}"
+    />
+  </head>
+  <body>
+    <a href="{{ url_for('home') }}" class="back-button">
+      <i class=""></i> Kembali
+    </a>
+    <!-- Search Section -->
+    <div class="search-container">
+      <div class="search-bar">
+        <input type="text" placeholder="Cari produk atau toko..." />
+      </div>
+      <div class="camera-icon">
+        <form id="uploadForm" enctype="multipart/form-data">
+          <input
+            type="file"
+            id="imageInput"
+            name="image"
+            accept="image/*"
+            capture="camera"
+            style="display: none"
+          />
+          <label for="imageInput" class="back-icon">
+            <i class="fas fa-camera"></i>
+          </label>
+        </form>
+      </div>
+    </div>
+
+    <h2 class="section-title">Produk Kami</h2>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+      <!-- Repeat this block for each product -->
+      {% for ds in dataProduk %}
+      <a href="{{ url_for('detailProduk', id=ds.id) }}" class="product-link">
+        <div class="product-card">
+          <div class="product-image">
+            <!-- Mengambil gambar dari database -->
+            <img
+              src="{{ url_for('static', filename='profile_photos/' ~ ds.gambar) if ds.gambar else url_for('static', filename='asset/image/download.jpg') }}"
+              alt="{{ ds.nama_barang }}"
+            />
+            {% if ds.is_new %}
+            <span class="tag new">BARU</span>
+            {% endif %} {% if ds.is_on_sale %}
+            <span class="tag sale">OBRAL</span>
+            {% endif %}
+          </div>
+          <h3 class="product-name">{{ ds.nama_barang }}</h3>
+          <p class="product-price">
+            <span class="price">Rp {{ "{:,}".format(ds.harga) }}</span>
+            {% if ds.original_price %}
+            <span class="original-price"
+              >Rp {{ "{:,}".format(ds.original_price) }}</span
+            >
+            {% endif %}
+          </p>
+          <div>
+            <button class="add-to-cart">Lihat Produk</button>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+      <!-- End Product Card -->
+    </div>
+    <script>
+      document
+        .getElementById("imageInput")
+        .addEventListener("change", function (event) {
+          const formData = new FormData();
+          formData.append("image", event.target.files[0]);
+
+          fetch("/detect", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.products) {
+                const productGrid = document.querySelector(".product-grid");
+                productGrid.innerHTML = ""; // Kosongkan grid
+
+                // Tambahkan produk yang dideteksi
+                data.products.forEach((product) => {
+                  const productCard = `
+                        <a href="/detailProduk/${
+                          product.id
+                        }" class="product-link">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="/static/profile_photos/${
+                                      product.gambar
+                                    }" alt="${product.nama_barang}">
+                                </div>
+                                <h3 class="product-name">${
+                                  product.nama_barang
+                                }</h3>
+                                <p class="product-price">Rp ${product.harga.toLocaleString()}</p>
+                                <button class="add-to-cart">Lihat Produk</button>
+                            </div>
+                        </a>
+                    `;
+                  productGrid.innerHTML += productCard;
+                });
+              } else {
+                alert("Tidak ada produk yang terdeteksi.");
+              }
+            })
+            .catch((error) => console.error("Error:", error));
+        });
+    </script>
+  </body>
+</html>

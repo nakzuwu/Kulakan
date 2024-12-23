@@ -1,0 +1,155 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.store-header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+}
+
+.store-info {
+  display: flex;
+  align-items: center;
+}
+
+.store-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.store-details {
+  flex: 1;
+}
+
+.store-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.store-actions {
+  margin-top: 10px;
+}
+
+.action-btn {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.action-btn.follow-btn {
+  background-color: #f60;
+  color: #fff;
+}
+
+.store-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.nav-link {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.nav-link.active {
+  color: #f60;
+  border-bottom: 2px solid #f60;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #f60;
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.tag.new {
+  background-color: #28a745;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.product-price {
+  margin: 10px;
+  font-size: 16px;
+  color: #f60;
+}
+
+.original-price {
+  text-decoration: line-through;
+  font-size: 14px;
+  color: #999;
+}
+
+.add-to-cart {
+  display: block;
+  width: calc(100% - 20px);
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #28a745;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart:hover {
+  background-color: #218838;
+}

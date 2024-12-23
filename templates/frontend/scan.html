@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/scan.css') }}"
+    />
+    <title>Fitur Scan</title>
+  </head>
+  <body>
+    <a href="{{ url_for('menuproduk') }}" class="back-button">
+      <i class="fa fa-arrow-left"></i> Kembali
+    </a>
+    <div class="scan-container">
+      <div class="camera-icon">
+        <img
+          src="{{ url_for('static', filename='asset/image/camera.png') }}"
+          alt="camera"
+        />
+      </div>
+      <div class="container">
+        <div id="cek"  class="upload-section">
+            <h2>Unggah Fotomu</h2>
+            <form action="/submit" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file-input" class="custom-file-label">
+                        Pilih Gambar
+                    <input type="file" id="file-input" name="my_image" class="form-control-file">
+                </div>
+                <button type="submit" class="btn btn-primary">Cek</button>
+            </form>
+        </div>
+        
+
+        <!-- Result Section -->
+        <div class="result-section">
+            <h2>Hasil Prediksi</h2>
+            <div class="result-content">
+                {% if prediction %}
+                <img src="{{img_path }}" alt="Classification Result" class="img-fluid">
+                <h4>Result: <i>{{prediction}}</i></h4>
+                <h4>Result: <i>{{description}}</i></h4>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

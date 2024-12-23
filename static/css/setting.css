@@ -1,0 +1,102 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', serif;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .back-button {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    background-color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .back-button i {
+    font-size: 16px;
+  }
+  
+  .back-button:hover {
+    background-color: #f0f0f0;
+    color: #000;
+  }
+  
+  /* Settings Container */
+  .settings-container {
+    background: #ffffff;
+    padding: 30px;
+    height: 100%;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title */
+  .settings-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #004600;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 100px;
+  }
+  
+  /* Settings List */
+  .settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Setting Item */
+  .setting-item {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .setting-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Icon */
+  .icon {
+    font-size: 2rem;
+    color: #69bf5e;
+    margin-right: 15px;
+  }
+  
+  /* Setting Text */
+  .setting-text {
+    font-size: 1.2rem;
+    color: #004600;
+    text-align: center;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .settings-container {
+      padding: 20px;
+    }
+  }
+  

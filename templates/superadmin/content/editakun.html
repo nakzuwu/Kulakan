@@ -1,0 +1,40 @@
+{% extends '/superadmin/superadmin.html' %}
+
+{% block content %}
+<div class="main">
+    <div class="form-container">
+        <h2>Edit User</h2>
+        {% if user.profile_photo %}
+            <img src="{{ url_for('static', filename='profile_photos/' + user.profile_photo) }}" alt="Profile Logo" class="product-image">
+        {% else %}
+            <img src="{{ url_for('static', filename='asset/image/download.jpg') }}" alt="Default Image" class="product-image">
+        {% endif %}
+        <form method="POST" action="{{ url_for('editakun', id=user.id) }}" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nama">Nama</label>
+                <input type="text" id="nama" name="nama" value="{{ user.name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ user.email }}" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" value="{{ user.address }}">
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" name="role" required>
+                    <option value="user" {% if user.role == 'user' %}selected{% endif %}>User</option>
+                    <option value="store_admin" {% if user.role == 'store_admin' %}selected{% endif %}>store_admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="profile_photo">Unggah Foto Profil Baru</label>
+                <input type="file" id="profile_photo" name="profile_photo" accept="image/*">
+            </div>
+            <button type="submit" class="btn">Update</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

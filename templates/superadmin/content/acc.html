@@ -1,0 +1,46 @@
+{% extends '/superadmin/superadmin.html' %}
+
+{% block content %}
+<div class="main">
+    <div class="product-list">
+        <h2 class="title">Konfirmasi Pendaftaran Toko</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Foto Profil</th>
+                    <th>Nama Toko</th>
+                    <th>Nomor HP</th>
+                    <th>Bank</th>
+                    <th>Nomor Rekening</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for toko in toko_list %}
+                <tr>
+                    <td>
+                        {% if toko.user.profile_photo %}
+                        <img src="{{ url_for('static', filename='profile_photos/' + toko.user.profile_photo) }}" alt="Profile Logo" class="product-image">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='asset/image/download.jpg') }}" alt="Default Image" class="product-image">
+                        {% endif %}
+                    </td>
+                    <td>{{ toko.user.name }}</td>
+                    <td>{{ toko.no_hp }}</td>
+                    <td>{{ toko.bank }}</td>
+                    <td>{{ toko.no_rek }}</td>
+                    <td>{{ toko.status }}</td>
+                    <td class="actions">
+                        {% if toko.status == 'Pending' %}
+                        <a href="{{ url_for('approve_toko', toko_id=toko.id) }}" class="btn-approve">Approve</a> |
+                        <a href="{{ url_for('reject_toko', toko_id=toko.id) }}" class="btn-reject">Reject</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

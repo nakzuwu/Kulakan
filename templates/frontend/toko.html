@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Toko</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/toko.css') }}"
+    />
+  </head>
+  <body>
+    <div class="store-header">
+      <div class="store-info">
+        <img
+          src="/static/assets/store-logo.png"
+          alt="Store Logo"
+          class="store-logo"
+        />
+        <div class="store-details">
+          <h2 class="store-name">RyN15_fashion</h2>
+          <div class="store-actions">
+            <button class="action-btn">Chat Now</button>
+            <button class="action-btn follow-btn">FOLLOW</button>
+          </div>
+        </div>
+      </div>
+      <nav class="store-nav">
+        <a href="#" class="nav-link active">Toko</a>
+        <a href="#" class="nav-link">Semua Produk</a>
+        <a href="#" class="nav-link">Profil</a>
+      </nav>
+    </div>
+    <div class="store-content">
+      <div class="product-grid">
+        <!-- Data Produk dari Database -->
+        {% for ds in dataProduk %}
+        <a href="{{ url_for('detailProduk', id=ds.id) }}" class="product-link">
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="{{ url_for('static', filename='profile_photos/' ~ ds.gambar) if ds.gambar else url_for('static', filename='assets/no-image.jpg') }}"
+                alt="{{ ds.nama_barang }}"
+              />
+              {% if ds.is_new %}
+              <span class="tag new">BARU</span>
+              {% endif %} {% if ds.is_on_sale %}
+              <span class="tag sale">OBRAL</span>
+              {% endif %}
+            </div>
+            <h3 class="product-name">{{ ds.nama_barang }}</h3>
+            <p class="product-price">
+              <span class="price">Rp {{ "{:,}".format(ds.harga) }}</span>
+              {% if ds.original_price %}
+              <span class="original-price"
+                >Rp {{ "{:,}".format(ds.original_price) }}</span
+              >
+              {% endif %}
+            </p>
+            <button class="add-to-cart">Lihat Produk</button>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

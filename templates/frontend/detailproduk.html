@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KULAKAN - Produk Kami</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/detailproduk.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <a href="{{ url_for('home') }}">Kulakan.</a>
+      </div>
+      <div class="search-container">
+        <input type="text" placeholder="Cari produk..." class="search-bar" />
+        <a href="{{ url_for('scan') }}" class="camera-icon">
+          <i class="fas fa-camera"></i>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Container Card -->
+      <div class="product-card">
+        <!-- Gambar Produk -->
+        <div class="product-image">
+          <img
+            src="{{ url_for('static', filename='profile_photos/' ~ dataBs.gambar) if dataBs.gambar else url_for('static', filename='asset/image/download.jpg') }}"
+            alt="{{ dataBs.nama_barang }}"
+          />
+          {% if dataBs.kategori == 'Baru' %}
+          <span class="tag new">BARU</span>
+          {% elif dataBs.kategori == 'Obral' %}
+          <span class="tag sale">OBRAL</span>
+          {% endif %}
+        </div>
+
+        <!-- Detail Produk -->
+        <div class="product-info">
+          <h3 class="product-name">{{ dataBs.nama_barang }}</h3>
+          <p class="product-price">Rp {{ "{:,}".format(dataBs.harga) }}</p>
+          <p>Kategori: {{ dataBs.kategori }}</p>
+          <p>Stok: {{ dataBs.stok }}</p>
+          <p>Deskripsi: {{ dataBs.deskripsi[:100] }}...</p>
+
+          <!-- Informasi Toko -->
+          <div class="owner-card">
+            <img
+              src="{{ url_for('static', filename='profile_photos/' ~ dataBs.owner.profile_photo) }}"
+              alt="{{ dataBs.owner.name }}"
+              class="store-photo"
+            />
+            <div
+              class="owner-info"
+              onclick="redirectToStore()"
+              style="cursor: pointer"
+            >
+              <p class="store-name">{{ dataBs.owner.name }}</p>
+            </div>
+          </div>
+          <!-- Tombol Cart dan Payment -->
+          <div class="action-buttons">
+            <form
+              action="{{ url_for('add_to_cart', product_id=dataBs.id) }}"
+              method="POST"
+            >
+              <button type="submit" class="btn-cart">Add to Cart</button>
+            </form>
+            <a href="{{ url_for('payment') }}" class="btn-payment"
+              >Beli Sekarang</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <a href="{{ url_for('menuproduk') }}" class="btn">Kembali ke Produk</a>
+    </main>
+    <script>
+      function redirectToStore() {
+        // Ganti '/menu-toko' dengan URL atau route ke halaman menu toko
+        window.location.href = "{{ url_for('toko') }}";
+      }
+    </script>
+  </body>
+</html>

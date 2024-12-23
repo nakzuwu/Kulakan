@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KULAKAN - Pembayaran</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+</head>
+<body>
+    <a href="{{ url_for('home') }}" class="back-button">Kembali</a>
+    <div class="payment-container">
+        <h1>Menu Pembayaran</h1>
+        
+        <!-- Alamat Pengiriman -->
+        <div class="section">
+            <h3>Alamat Pengiriman</h3>
+            <p><strong>Nama:</strong> {{ user.nama }}</p>
+            <p><strong>Alamat:</strong> {{ user.alamat }}</p>
+            <p><strong>Telepon:</strong> {{ user.telepon }}</p>
+            <a href="#" class="edit-button">Ubah Alamat</a>
+        </div>
+        
+        <!-- Ringkasan Pesanan -->
+        <div class="section">
+            <h3>Ringkasan Pesanan</h3>
+            {% for product in products %}
+            <div class="order-item">
+                <img src="{{ url_for('static', filename='profile_photos/' + product.image) }}" alt="Produk" class="product-image">
+                <div class="details">
+                    <p><strong>{{ product.name }}</strong></p>
+                    <p>Rp {{ "{:,}".format(product.price) }}</p>
+                    <p>Jumlah: {{ product.quantity }}</p>
+                    <p><strong>Total Produk:</strong> Rp {{ "{:,}".format(product.total_price) }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Metode Pembayaran -->
+        <div class="section">
+            <h3>Metode Pembayaran</h3>
+            <form method="POST" action="{{ url_for('payment') }}">
+                <select class="payment-method" name="payment_method">
+                    <option value="bank_transfer">Transfer Bank</option>
+                    <option value="e_wallet">E-Wallet</option>
+                    <option value="cod">COD (Bayar di Tempat)</option>
+                </select>
+                <button class="checkout-button" onclick="window.location.href='{{ url_for('process_payment', total=total_price) }}'">Lanjutkan Pembayaran</button>
+            </form>
+        </div>
+        
+        <!-- Total Pembayaran -->
+        <div class="section total">
+            <h3>Total Pembayaran</h3>
+            <p><strong>Rp {{ "{:,}".format(total_price) }}</strong></p>
+        </div>
+    </div>
+</body>
+</html>

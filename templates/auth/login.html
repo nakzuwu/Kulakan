@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-left">
+            <!-- Tambahkan gambar di sisi kiri -->
+            <img src="{{ url_for('static', filename='asset/image/key.png') }}" alt="Cartbg">
+        </div>
+        <div class="login-right">
+            <div class="logo">Kulakan.</div>
+            <h2>Masuk ke Akunmu</h2>
+            <form class="login-form" method="POST">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit" class="start-btn">Log In</button>
+            </form>
+            <p class="login-link">
+                <a href="{{ url_for('forgot_password') }}">Lupa Kata Sandi?</a>
+            </p>
+            <p class="login-link">Belum punya akun? 
+                <a href="{{ url_for('register') }}">Daftar</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KULAKAN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/riwayat.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Riwayat Transaksi</h1>
+        <div class="riwayat-list">
+            {% for transaksi in riwayat %}
+            <div class="riwayat-item">
+                <div class="produk-gambar">
+                    <img src="{{ transaksi.gambar }}" alt="{{ transaksi.nama_produk }}">
+                </div>
+                <div class="produk-info">
+                    <h2>{{ transaksi.nama_produk }}</h2>
+                    <p>Jumlah: {{ transaksi.jumlah }}</p>
+                    <p>Total Harga: Rp {{ transaksi.harga_total }}</p>
+                    <p>Tanggal: {{ transaksi.tanggal }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

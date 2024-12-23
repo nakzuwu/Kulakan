@@ -1,0 +1,65 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+.payment-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #4caf50;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h3 {
+    color: #333;
+    font-weight: 600;
+}
+
+.section p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.action {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.continue-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #69BF5E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.continue-button:hover {
+    background-color: #4caf50;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}

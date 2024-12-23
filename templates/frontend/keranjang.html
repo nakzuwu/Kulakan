@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KULAKAN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/keranjang.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery for simplicity -->
+</head>
+<body>
+    <a href="{{ url_for('home') }}" class="back-button">Kembali</a>
+    <div class="order-list">
+        <h1>Daftar Keranjang</h1>
+        
+        <form id="cart-form">
+            {% for product in products %}
+            <div class="order-card">
+                <div class="order-info">
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="order-checkbox" name="checkout_items" value="{{ product.id }}" data-product-id="{{ product.id }}">
+                        <span class="checkmark"></span>
+                    </label>
+                    <img src="{{ url_for('static', filename='profile_photos/' + product.image) if product.image else url_for('static', filename='images/default_product.jpg') }}" alt="Produk" class="product-image">
+                    <div class="order-details">
+                        <h3>{{ product.store_name if product.store_name else 'Tidak Diketahui' }}</h3>
+                        <p>{{ product.name }}</p>
+                        <p><strong>Harga Satuan:</strong> Rp {{ "{:,}".format(product.price) }}</p>
+                        <p><strong>Stock Tersedia:</strong> {{ product.stock }}</p>
+                        <div class="quantity-control">
+                            <label for="quantity_{{ product.id }}">Jumlah:</label>
+                            <input type="number" id="quantity_{{ product.id }}" name="quantity_{{ product.id }}" value="{{ product.quantity }}" min="1" max="{{ product.stock }}" class="quantity-input" data-product-id="{{ product.id }}">
+                        </div>
+                        <p><strong>Total Produk:</strong> <span id="total_price_{{ product.id }}" class="price" data-price="{{ product.price }}">{{ "Rp {:,}".format(product.total_price) }}</span></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </form>
+
+        <div class="cart-summary">
+            <h3>Subtotal: Rp <span id="subtotal">0</span></h3>
+            <button type="submit" form="cart-form" name="action" value="checkout" class="btn-checkout">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Function to calculate subtotal
+            function calculateSubtotal() {
+                let subtotal = 0;
+
+                // Iterate over all checked checkboxes
+                $('.order-checkbox:checked').each(function () {
+                    const productId = $(this).data('product-id');
+                    const price = parseFloat($(`#total_price_${productId}`).data('price')); // Get the price of the product
+                    const quantity = parseInt($(`#quantity_${productId}`).val(), 10); // Get the quantity of the product
+
+                    if (!isNaN(price) && !isNaN(quantity)) {
+                        subtotal += price * quantity; // Add the total price for each checked product
+                    }
+                });
+
+                // Update subtotal display
+                $('#subtotal').text(subtotal.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })); // Format as Indonesian Rupiah
+            }
+
+            // Recalculate subtotal when a checkbox is toggled
+            $('.order-checkbox').on('change', function () {
+                calculateSubtotal();
+            });
+
+            // Recalculate subtotal when the page loads
+            calculateSubtotal();
+
+            // Handle quantity input changes
+            $('.quantity-input').on('change', function () {
+                const productId = $(this).data('product-id');
+                const newQuantity = $(this).val();
+
+                // Validate new quantity
+                if (isNaN(newQuantity) || newQuantity <= 0) {
+                    alert('Jumlah harus lebih dari 0.');
+                    $(this).val(1); // Reset to minimum value
+                    calculateSubtotal();
+                    return;
+                }
+
+                // AJAX request to update quantity
+                $.ajax({
+                    url: "{{ url_for('update_cart') }}", // Endpoint to handle cart update
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        product_id: productId,
+                        quantity: parseInt(newQuantity, 10)
+                    }),
+                    success: function (response) {
+                        // Update total price dynamically
+                        $(`#total_price_${productId}`).text(response.total_price.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }));
+                        $(`#total_price_${productId}`).data('price', response.unit_price); // Store updated unit price
+                        calculateSubtotal(); // Recalculate subtotal
+                    },
+                    error: function () {
+                        alert('Gagal memperbarui keranjang. Silakan coba lagi.');
+                    }
+                });
+            });
+
+            // Recalculate subtotal when a checkbox is toggled
+            $('.order-checkbox').on('change', function () {
+                calculateSubtotal();
+            });
+        });
+    </script>
+</body>
+</html>

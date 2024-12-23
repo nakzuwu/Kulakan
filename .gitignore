@@ -1,0 +1,7 @@
+.env
+__pychace__
+.vscode
+model
+venv
+sembako.h5
+my_model.h5

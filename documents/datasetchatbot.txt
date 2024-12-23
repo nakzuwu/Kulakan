@@ -1,0 +1,93 @@
+Aplikasi Kulakan adalah aplikasi yang mempertemukan banyak pemilik toko agen sembako dengan pemilik warung kelontong.
+
+pembuatan aplikasi ini berawal dari salah satu pendiri yang memiliki usaha warung kelontong yang memiliki agen langganan, namun ada kalanya agen langganan tersebut tidak memiliki produk yang akan dibeli atau stok kosong, kemudian pemilik warung akan sibuk mencari produk tersebut di agen agen lain yang disekitar wilayahnya.
+
+Pencarian Produk Memungkinkan pengguna mencari produk berdasarkan nama, kategori, atau kata kunci tertentu. Termasuk filter berdasarkan harga, popularitas, dan kategori.
+
+Rekomendasi Produk Menampilkan rekomendasi produk yang relevan berdasarkan histori pencarian atau pembelian sebelumnya.
+
+Daftar Favorit Fitur untuk menyimpan produk favorit atau wishlist agar mudah diakses kembali
+
+Keranjang Belanja Pengguna dapat menambahkan produk ke keranjang belanja dan memasukkan jumlah yang ingin dipesan sebelum melakukan checkout
+
+Review dan Rating Produk Pengguna dapat melihat dan menulis ulasan serta memberikan rating untuk produk yang dibeli
+
+Pembayaran Mendukung berbagai metode pembayaran, seperti transfer bank, kartu kredit/debit, e-wallet, dan pembayaran di tempat (COD)
+
+Pelacakan Pesanan Pengguna dapat melacak status pengiriman pesanan dari mulai diproses, dikirim, hingga sampai di alamat tujuan
+
+Chat Penjual Fitur chat untuk memfasilitasi komunikasi langsung antara pembeli dan penjual untuk pertanyaan terkait produk
+
+Notifikasi Memberi tahu pengguna tentang status pesanan, diskon, atau penawaran khusus
+
+Promosi dan Diskon Penawaran khusus yang bisa digunakan dengan kode kupon atau promo
+
+Pengisian Alamat Anda bisa mengisi alamat sebagai penjual (pemilik gudang) ataupun pembeli (toko kelontong) pada tab profile kemudian masuk ke menu alamat
+
+Akun dan Keamanan Pada fitur ini anda bisa mengisi username, no hp untuk keamanan, email, akun media sosial, serta ganti password
+
+Fitur Ganti Password Anda bisa menggunakan fitur ini untuk mengganti password saat login di aplikasi
+
+Riwayat Login Pada fitur ini kamu bisa mengetahui akun tertaut pada perangkat apa saja dan lokasinya
+
+Profil Saya Pada fitur ini kamu bisa mengganti foto profil, Bio, Jenis Kelamin, dan Tanggal Lahir
+
+Pengaturan Pesan Disini anda bisa mengatur pesan yang dijawab otomatis saat anda tidak aktif atau diluar aplikasi
+
+Proses Pemesanan di Marketplace Registrasi dan Login: Pengguna perlu membuat akun atau masuk untuk melakukan pemesanan.
+
+Pencarian dan Pemilihan Produk Pengguna dapat mencari atau menelusuri katalog, lalu memilih produk yang diinginkan. 
+
+Menambahkan ke Keranjang Produk dapat ditambahkan ke keranjang belanja. Dari sini, pengguna dapat melanjutkan pencarian atau langsung ke pembayaran.
+
+Checkout: Setelah siap, pengguna masuk ke tahap checkout untuk memasukkan alamat pengiriman dan memilih metode pembayaran. 
+
+Konfirmasi Pembayaran Pengguna menyelesaikan pembayaran sesuai metode yang dipilih. 
+
+Notifikasi Pembelian Marketplace mengirimkan notifikasi konfirmasi pesanan dan perkiraan pengiriman.
+
+Pelacakan dan Penerimaan Setelah pesanan dikirim, pengguna dapat melacaknya hingga pesanan sampai di tujuan. 
+
+Kategori Data untuk Keperluan Chatbot Info Produk Nama produk, deskripsi, kategori, harga, diskon, ketersediaan stok.
+
+FAQ Pembelian Pertanyaan umum tentang cara membeli, metode pembayaran, cara menggunakan kupon, dan kebijakan pengembalian.
+
+Layanan Pelanggan Respon otomatis untuk pertanyaan terkait bantuan teknis, klaim pengembalian, dan pelacakan pesanan.
+
+Panduan Pengiriman Informasi tentang perkiraan waktu pengiriman, biaya pengiriman, dan zona layanan.
+
+Promosi dan Penawaran Khusus: Daftar kode promo, diskon, atau penawaran khusus yang sedang berlaku.
+
+Layanan After-Sales Informasi garansi, pengembalian barang, dan layanan pelanggan terkait masalah pasca-pembelian.
+
+Scan Produk Pada menu ini pengguna dapat menggunakan kamera pada smartphone untuk mencari barang yang diinginkan secara langsung, jika tidak mengetahui nama barang yang akan dicari. 
+
+Metode Pembayaran Kami menyediakan berbagai pembayaran melalui bank dan e-wallet
+
+Fitur scan produk memungkinkan pengguna untuk memindai barcode atau QR code dari kemasan barang sembako. Dengan fitur ini, toko kelontong dapat dengan cepat menambahkan produk ke dalam daftar pembelian tanpa harus mencari secara manual. Sistem akan secara otomatis menampilkan informasi produk, seperti nama, harga, dan ketersediaan stok. Fitur ini sangat membantu dalam mempercepat proses transaksi, terutama bagi toko dengan volume pembelian yang tinggi.
+
+Keranjang belanja adalah tempat penyimpanan sementara untuk produk-produk yang dipilih oleh pengguna sebelum menyelesaikan pembelian. Di dalam fitur ini, pengguna dapat melihat daftar barang yang ingin dibeli, mengubah jumlah produk, atau menghapus item yang tidak diperlukan. Fitur ini dirancang dengan antarmuka yang intuitif, sehingga mempermudah pengguna untuk mengelola pesanan mereka. Selain itu, terdapat opsi untuk langsung menghitung total harga dan estimasi ongkos kirim sebelum melanjutkan ke tahap pembayaran.
+
+Fitur pencarian produk memungkinkan pengguna untuk menemukan barang sembako dengan cepat berdasarkan kata kunci, kategori, atau filter tertentu. Pengguna dapat menyaring hasil pencarian berdasarkan harga, popularitas, atau diskon yang tersedia. Dengan algoritme pencarian yang cerdas, fitur ini memastikan bahwa hasil pencarian relevan dengan kebutuhan pengguna. Hal ini mempermudah warung kecil untuk menemukan produk yang sesuai tanpa harus menghabiskan banyak waktu menjelajahi seluruh katalog.
+
+Fitur manajemen stok dirancang khusus untuk agen sembako agar dapat memantau ketersediaan barang secara real-time. Agen dapat menambahkan, menghapus, atau memperbarui informasi stok melalui dashboard yang mudah digunakan. Fitur ini juga memberikan notifikasi jika stok barang hampir habis, sehingga agen dapat segera mengambil tindakan untuk menghindari kekosongan. Dengan manajemen stok yang efisien, agen dapat menjaga kepuasan pelanggan dan mengoptimalkan penjualan.
+
+Fitur layanan pelanggan menyediakan akses cepat bagi pengguna untuk mendapatkan bantuan, baik dari agen maupun tim dukungan aplikasi. Pengguna dapat mengajukan pertanyaan, melaporkan masalah, atau memberikan masukan melalui fitur ini. Sistem akan mengarahkan pengguna ke agen yang relevan atau tim support sesuai dengan kategori masalah. Layanan pelanggan juga dilengkapi dengan pusat bantuan yang berisi artikel dan panduan untuk menyelesaikan masalah umum secara mandiri.
+
+Fitur pembayaran fleksibel menawarkan berbagai metode pembayaran, termasuk transfer bank, dompet digital, dan pembayaran tunai melalui kurir. Pengguna dapat memilih metode pembayaran yang paling sesuai dengan kebutuhan mereka. Sistem juga memberikan notifikasi otomatis setelah pembayaran berhasil dilakukan, sehingga pengguna dapat langsung memantau status pesanan. Fitur ini dirancang untuk memberikan kenyamanan dan fleksibilitas bagi toko kelontong dalam mengelola pembelian mereka.
+
+Fitur rekomendasi produk dirancang untuk memberikan saran barang yang relevan berdasarkan riwayat pembelian, kategori favorit, atau tren terkini. Sistem ini menggunakan algoritme berbasis AI untuk mempelajari preferensi pengguna dan menampilkan produk yang paling sesuai. Dengan fitur ini, toko kelontong dapat menemukan barang yang mungkin mereka butuhkan tanpa harus mencarinya secara manual, sehingga pengalaman belanja menjadi lebih efisien.
+
+Fitur pelacakan pesanan memungkinkan pengguna untuk memantau status pembelian mereka secara real-time, mulai dari proses konfirmasi, pengemasan, hingga pengiriman. Informasi seperti lokasi kurir terkini dan estimasi waktu tiba tersedia melalui antarmuka yang sederhana. Dengan fitur ini, toko kelontong dapat merasa lebih tenang karena mereka tahu kapan barang akan sampai.
+
+Fitur pengelolaan profil memberikan kemampuan kepada pengguna untuk memperbarui informasi pribadi seperti nama, alamat toko, nomor telepon, dan preferensi pembayaran. Agen sembako juga dapat menambahkan informasi seperti lokasi gudang atau deskripsi toko mereka. Fitur ini memastikan bahwa setiap pengguna memiliki kontrol penuh atas informasi akun mereka, yang dapat diakses kapan saja.
+
+Fitur penjadwalan pengiriman memungkinkan pengguna untuk memilih waktu pengiriman barang sesuai kebutuhan mereka. Agen dapat menetapkan slot waktu tertentu untuk pengiriman, yang memudahkan koordinasi logistik. Fitur ini sangat membantu toko kelontong yang ingin memastikan barang tiba saat mereka tersedia untuk menerimanya, sehingga mencegah terjadinya pengiriman ulang.
+
+Fitur analitik penjualan memberikan laporan mendalam tentang kinerja toko agen sembako. Laporan mencakup data penjualan harian, mingguan, atau bulanan, serta produk-produk terlaris. Agen dapat menggunakan informasi ini untuk mengidentifikasi tren pembelian dan mengatur strategi pemasaran. Dengan fitur ini, agen dapat membuat keputusan bisnis yang lebih cerdas dan mengoptimalkan keuntungan.
+
+Fitur perbandingan produk memungkinkan pengguna untuk membandingkan beberapa produk yang sama dari agen berbeda berdasarkan harga, ulasan, dan waktu pengiriman. Hal ini membantu toko kelontong membuat keputusan pembelian yang lebih baik, terutama untuk barang dengan harga grosir. Fitur ini dirancang untuk mempromosikan transparansi dan persaingan sehat di antara agen.
+
+Model Bisnis dalam E-commerce Kami mencakup berbagai model bisnis, seperti B2B (Business to Business), di mana transaksi terjadi antara dua bisnis, misalnya agen sembako dan toko kelontong. Ada juga B2C (Business to Consumer), yang melibatkan bisnis menjual langsung ke konsumen akhir. Model C2C (Consumer to Consumer) memungkinkan individu untuk bertransaksi satu sama lain melalui platform pihak ketiga. Variasi lainnya adalah B2B2C (Business to Business to Consumer), di mana satu bisnis memediasi hubungan antara penyedia barang dan konsumen.
+
+Pembayaran di E-commerce mendukung berbagai metode pembayaran untuk kemudahan pengguna, termasuk transfer bank, e-wallet, kartu kredit/debit, dan Cash on Delivery (COD). Untuk transaksi B2B, pembayaran sering menggunakan metode faktur atau cicilan. Integrasi dengan penyedia pembayaran seperti Midtrans menjadi elemen penting untuk pengalaman pembayaran yang lancar.

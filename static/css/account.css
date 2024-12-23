@@ -1,0 +1,166 @@
+/* Global styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.main-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Back button */
+.back-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+  background-color: #fff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.back-button i {
+  font-size: 16px;
+}
+
+.back-button:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+/* Profile container */
+.profile-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-family: 'Merriweather', serif;
+}
+
+.profile-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.profile-photo img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ddd;
+}
+
+.profile-details p {
+  margin: 5px 0;
+}
+
+.profile-details .btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #69bf5e;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.profile-details .btn:hover {
+  background-color: #004600;
+}
+
+/* Edit Profile */
+.profile-edit-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.profile-edit-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-family: 'Merriweather', serif;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #69bf5e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #004600;
+}
+.profile-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-photo {
+  flex-shrink: 0;
+}
+
+.profile-details {
+  flex-grow: 1;
+}
+
+.logout-button {
+  margin-left: 20px;  /* Adjust spacing between profile details and logout button */
+}
+
+.btndanger {
+  background-color: #f44336; /* Red color for the logout button */
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btndanger:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
