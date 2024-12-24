@@ -31,10 +31,12 @@
           <i class="icon fa fa-bell"></i>
           <span class="setting-text">Tentang Kami</span>
         </div>
-        <div class="setting-item" onclick="window.location.href='#';">
-          <i class="icon fa fa-lock"></i>
-          <span class="setting-text">Mulai Toko</span>
+        {% if user.role == 'user' %}
+        <div class="setting-item" onclick="window.location.href='{{ url_for('daftar_toko') }}';">
+            <i class="icon fa fa-lock"></i>
+            <span class="setting-text">Mulai Toko</span>
         </div>
+        {% endif %}
         <div
           class="setting-item"
           onclick="window.location.href='{{ url_for('login') }}';"

@@ -88,6 +88,7 @@ def role_required(role):
             return func(*args, **kwargs)
         return wrapper
     return decorator
+
 def predict_label(img_path):
     # Memuat gambar dan menyesuaikan ukurannya
     i = image.load_img(img_path, target_size=(128, 128))
@@ -150,7 +151,12 @@ def toko():
 
 @app.route('/setting')
 def setting():
-    return render_template('frontend/setting.html')
+    if 'user_id' not in session:
+        flash('You need to log in first.', 'danger')
+        return redirect(url_for('login'))
+
+    user = User.query.get(session['user_id'])
+    return render_template('frontend/setting.html', user=user)
 
 @app.route('/tentang')
 def tentang():
