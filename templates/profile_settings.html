@@ -29,9 +29,6 @@
                         <a href="{{ url_for('listakun') }}" class="btn">Super Admin Panel</a>
                     {% elif user.role == 'store_admin' %}
                         <a href="{{ url_for('dashboard') }}" class="btn">Admin Panel</a>
-                    {% elif user.role == 'user' %}
-                        <a href="{{ url_for('daftar_toko') }}" class="btn">Daftar toko</a>
-                    
                     {% endif %}
                 </div>
                 <!-- Logout button -->
