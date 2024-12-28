@@ -4,6 +4,7 @@ from functools import wraps
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadTimeSignature
 from datetime import datetime, timedelta
+import datetime
 from werkzeug.utils import secure_filename
 from form import ProfileForm
 from models import db
@@ -26,6 +27,7 @@ import numpy as np
 import numpy as np
 import os
 import jwt
+from flask_jwt_extended import create_access_token,JWTManager
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -61,6 +63,7 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)  # Session expires
 Session(app)
 
 mail = Mail(app)
+jwt = JWTManager(app)
 
 db.init_app(app)
 with app.app_context():
@@ -146,6 +149,25 @@ def detailProduk(id):
 @app.route('/menuproduk')
 def menuproduk():
     return user_controller.menuproduk()
+
+@app.route('/api/products', methods=['GET'])
+def get_products():
+    products = Product.query.all()
+    products_data = []
+    for product in products:
+        product_data = {
+            'id': product.id,
+            'nama_barang': product.nama_barang,
+            'harga': product.harga,
+            'kategori': product.kategori,
+            'stok': product.stok,
+            'deskripsi': product.deskripsi,
+            'gambar': product.gambar,
+            'user_id': product.user_id
+        }
+        products_data.append(product_data)
+
+    return jsonify({'products': products_data})
 
 @app.route('/toko')
 def toko():
@@ -286,10 +308,14 @@ def registerApi():
         db.session.add(user)
         db.session.commit()
 
+        expires = datetime.timedelta(days=7)
+        access_token = create_access_token(identity={'id': user.id, 'email': user.email}, expires_delta=expires)
+
         # Return response sukses
         return jsonify({
         'message': 'Account created successfully!',
         'status': 'success',
+        'token': f"Bearer {access_token}",
         'user': {
         'id': user.id,
         'name': user.name,
@@ -308,28 +334,49 @@ def registerApi():
 @app.route('/api/login', methods=['POST'])
 def api_login():
     try:
-        data = request.json
+        # Parse JSON input
+        data = request.get_json()
+        if not data:
+            return jsonify({'error': 'Invalid request. No data provided.'}), 400
+
+        # Extract email and password
         email = data.get('email')
         password = data.get('password')
 
+        # Validate input
         if not email or not password:
             return jsonify({'error': 'Email and password are required.'}), 400
 
+        # Query the user from the database
         user = User.query.filter_by(email=email).first()
         if not user or not check_password_hash(user.password, password):
             return jsonify({'error': 'Invalid email or password.'}), 401
+  
+        # Generate JWT token with 7 days expiration
+        expires = datetime.timedelta(days=7)
+        access_token = create_access_token(
+            identity={'id': user.id, 'email': user.email}, 
+            expires_delta=expires
+        )
 
-        # Set user session
-        session['user_id'] = user.id
-        session['user_name'] = user.name
-        session['user_role'] = user.role
-
-        response = make_response(jsonify({
+        # Construct response
+        response = {
             'message': 'Login successful!',
-            'role': user.role
-        }), 200)
-        response.set_cookie('session', session.sid, httponly=True)  # 
-        return response
+            'token': f"Bearer {access_token}",
+            'user': {
+                'id': user.id,
+                'name': user.name,
+                'email': user.email,
+                'address': user.address,
+                'profile_photo': user.profile_photo,
+            },
+        }
+
+        return make_response(jsonify(response), 200)
+
+    except Exception as e:
+        # Catch any unexpected errors
+        return jsonify({'error': f'An error occurred: {str(e)}'}), 500
 
     except Exception as e:
         app.logger.error(f"Login error: {str(e)}")
