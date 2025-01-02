@@ -89,7 +89,6 @@ def login():
     return render_template('auth/login.html')
 
 def logout():
-    # Clear the session data
     session.clear()
 
     # Remove the cart cookie (if exists)

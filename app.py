@@ -555,5 +555,59 @@ def approve_toko(toko_id):
 def reject_toko(toko_id):
     return superadmin_controller.reject_toko(toko_id)
 
+@app.route('/api/update-profile', methods=['POST'])
+def update_profile():
+    user_id = request.form.get('user_id')
+    if not user_id:
+        return jsonify({'error': 'User ID is required'}), 400
+
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+
+    # Update basic user details
+    name = request.form.get('name')
+    email = request.form.get('email')
+    address = request.form.get('address')
+
+    if name:
+        user.name = name
+    if email:
+        user.email = email
+    if address:
+        user.address = address
+
+    # Handle profile photo upload
+    if 'profile_photo' in request.files:
+        file = request.files['profile_photo']
+        if file and allowed_file(file.filename):
+            # Generate unique filename
+            ext = file.filename.rsplit('.', 1)[1].lower()
+            filename = f"{uuid.uuid4().hex}.{ext}"
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+            # Save the file to the specified folder
+            os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+            file.save(filepath)
+
+            # Update user's profile_photo
+            user.profile_photo = filename
+
+    # Save updates to the database
+    try:
+        db.session.commit()
+        return jsonify({
+            'message': 'Profile updated successfully!',
+            'user': {
+                'name': user.name,
+                'email': user.email,
+                'address': user.address,
+                'profile_photo': f"/static/profile_photos/{user.profile_photo}" if user.profile_photo else None,
+            }
+        }), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
 if __name__ == '__main__':
     app.run(debug=True)
+
